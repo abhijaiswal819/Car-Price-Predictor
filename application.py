@@ -4,6 +4,9 @@ import pickle
 import pandas as pd
 import numpy as np
 
+import os 
+
+
 app=Flask(__name__)
 cors=CORS(app)
 model=pickle.load(open('LinearRegressionModel.pkl','rb'))
@@ -40,4 +43,6 @@ def predict():
 
 
 if __name__=='__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000)) 
+    app.run(host='0.0.0.0', port=port)
+    #app.run()
